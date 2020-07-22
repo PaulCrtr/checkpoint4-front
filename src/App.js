@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Home from "./components/Home/Home";
 import Recipe from "./components/Recipe/Recipe";
 import PostRecipe from "./components/PostRecipe/PostRecipe";
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/postrecipe" component={PostRecipe} />
           <Route exact path="/about" component={About} />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );
