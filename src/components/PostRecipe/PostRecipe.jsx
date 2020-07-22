@@ -1,7 +1,11 @@
 import React from "react";
 
 const PostRecipe = () => {
-  return <></>;
+  return (
+    <>
+      <p>post recipe</p>
+    </>
+  );
 };
 
 export default PostRecipe;

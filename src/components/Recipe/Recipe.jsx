@@ -1,7 +1,11 @@
 import React from "react";
 
 const Recipe = () => {
-  return <></>;
+  return (
+    <>
+      <p>this is a recipe</p>
+    </>
+  );
 };
 
 export default Recipe;
