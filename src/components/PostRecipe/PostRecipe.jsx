@@ -75,7 +75,6 @@ const PostRecipe = () => {
           className="btn btn-dark form-control mt-3 mb-5"
           type="button"
           value="Send"
-          disabled
           onClick={() => sendRecipe()}
         />
       </form>
