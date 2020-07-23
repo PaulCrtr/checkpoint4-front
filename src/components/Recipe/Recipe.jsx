@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import axios from "axios";
 import couverts from "../../img/couverts.png";
 import timer from "../../img/timer.png";
@@ -10,6 +10,7 @@ import edit from "../../img/edit.png";
 const Recipe = () => {
   const { id } = useParams();
   const [data, setData] = useState();
+  const [backHome, setBackHome] = useState(false);
 
   useEffect(() => {
     axios
@@ -21,11 +22,22 @@ const Recipe = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
+  const deleteRecipe = () => {
+    axios
+      .delete(`http://localhost:8000/recipes/${id}`)
+      .then((res) => {
+        setBackHome(true);
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
+      {backHome && <Redirect to="/" />}
       <h3>{data && data.recipe[0].name_recipe}</h3>
       <div>
-        <img src={trash} alt="delete" />
+        <img src={trash} alt="delete" onClick={() => deleteRecipe()} />
         <img src={edit} alt="edit" />
       </div>
       <div>
