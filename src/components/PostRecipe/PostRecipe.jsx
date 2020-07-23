@@ -35,42 +35,51 @@ const PostRecipe = () => {
   };
 
   return (
-    <form className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
-      <Inputs
-        title={title}
-        setTitle={setTitle}
-        author={author}
-        setAuthor={setAuthor}
-        imageUrl={imageUrl}
-        setImageUrl={setImageUrl}
-        necessaryTime={necessaryTime}
-        setNecessaryTime={setNecessaryTime}
-        nbPeople={nbPeople}
-        setNbPeople={setNbPeople}
-        currentIngr={currentIngr}
-        setCurrentIngr={setCurrentIngr}
-        currentInstr={currentInstr}
-        setCurrentInstr={setCurrentInstr}
-        ingredients={ingredients}
-        setIngredients={setIngredients}
-        instructions={instructions}
-        setInstructions={setInstructions}
-      />
-      <IngredientsDisplay
-        ingredients={ingredients}
-        setIngredients={setIngredients}
-      />
-      <InstructionsDisplay
-        instructions={instructions}
-        setInstructions={setInstructions}
-      />
-      <input
-        className="btn btn-dark form-control mt-3 mb-5"
-        type="button"
-        value="Send"
-        onClick={() => sendRecipe()}
-      />
-    </form>
+    <>
+      <div className="d-lg-flex">
+        <form className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
+          <Inputs
+            title={title}
+            setTitle={setTitle}
+            author={author}
+            setAuthor={setAuthor}
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            necessaryTime={necessaryTime}
+            setNecessaryTime={setNecessaryTime}
+            nbPeople={nbPeople}
+            setNbPeople={setNbPeople}
+            currentIngr={currentIngr}
+            setCurrentIngr={setCurrentIngr}
+            currentInstr={currentInstr}
+            setCurrentInstr={setCurrentInstr}
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+            instructions={instructions}
+            setInstructions={setInstructions}
+          />
+        </form>
+        <form className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5 d-lg-flex justify-content-between">
+          <IngredientsDisplay
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+          />
+          <InstructionsDisplay
+            instructions={instructions}
+            setInstructions={setInstructions}
+          />
+        </form>
+      </div>
+      <form className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
+        <input
+          className="btn btn-dark form-control mt-3 mb-5"
+          type="button"
+          value="Send"
+          disabled
+          onClick={() => sendRecipe()}
+        />
+      </form>
+    </>
   );
 };
 

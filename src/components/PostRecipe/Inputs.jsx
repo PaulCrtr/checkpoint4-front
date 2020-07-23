@@ -44,21 +44,25 @@ const Inputs = ({
         onChange={(e) => setImageUrl(e.target.value)}
       />
       <div className="d-flex justify-content-between">
-        <input
-          className="form-control form-group mr-2"
-          type="text"
-          placeholder="Necessary time"
-          value={necessaryTime}
-          onChange={(e) => setNecessaryTime(e.target.value)}
-        />
-        <input
-          className="form-control form-group ml-2"
-          type="number"
-          min="0"
-          placeholder="How many people"
-          value={nbPeople}
-          onChange={(e) => setNbPeople(e.target.value)}
-        />
+        <div className="form-group mr-2 flex-fill">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Necessary time"
+            value={necessaryTime}
+            onChange={(e) => setNecessaryTime(e.target.value)}
+          />
+        </div>
+        <div className="form-group ml-2 flex-fill">
+          <input
+            className="form-control"
+            type="number"
+            min="0"
+            placeholder="People number"
+            value={nbPeople}
+            onChange={(e) => setNbPeople(e.target.value)}
+          />
+        </div>
       </div>
       <div className="form-group d-flex justify-content-between">
         <input
