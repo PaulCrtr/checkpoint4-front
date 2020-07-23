@@ -4,6 +4,7 @@ import axios from "axios";
 
 const Home = () => {
   const [recipeList, setRecipeList] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios
@@ -15,10 +16,22 @@ const Home = () => {
 
   return (
     <>
+      <input
+        placeholder="Search recipe"
+        className="form-control"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+        value={search}
+      />
       <div>
-        {recipeList.map((recipe, i) => (
-          <RecipeCard key={i} recipe={recipe} />
-        ))}
+        {recipeList
+          .filter((recipe) =>
+            recipe.name_recipe.toLowerCase().startsWith(search.toLowerCase(), 0)
+          )
+          .map((recipe, i) => (
+            <RecipeCard key={i} recipe={recipe} />
+          ))}
       </div>
     </>
   );
