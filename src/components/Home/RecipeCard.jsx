@@ -21,9 +21,7 @@ const RecipeCard = ({ recipe }) => {
         src={recipe.image}
         alt={recipe.name_recipe}
       />
-      <div className="card-body">
-        <h5 className="card-title text-center">{recipe.name_recipe}</h5>
-      </div>
+      <div className="card-body text-center">{recipe.name_recipe}</div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item d-flex justify-content-between">
           <div className="d-flex align-items-center">
