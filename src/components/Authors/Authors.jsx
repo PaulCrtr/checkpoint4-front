@@ -37,7 +37,7 @@ const Authors = () => {
   };
 
   return (
-    <>
+    <div className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
       <input
         placeholder="Search author"
         className="form-control"
@@ -51,18 +51,18 @@ const Authors = () => {
           author.toLowerCase().startsWith(search.toLowerCase(), 0)
         )
         .map((author, i) => (
-          <div key={i} className="author">
-            <div className="artist-header">
+          <ul key={i} className="list-group">
+            <li className="list-group-item text-light bg-dark text-center">
               <h4>{author}</h4>
-            </div>
+            </li>
             {authorList[author].map((data) => (
               <Link to={`/recipe/${data.id_recipe}`} key={data.id_recipe}>
-                <h5>{data.name_recipe}</h5>
+                <li className="list-group-item">{data.name_recipe}</li>
               </Link>
             ))}
-          </div>
+          </ul>
         ))}
-    </>
+    </div>
   );
 };
 
