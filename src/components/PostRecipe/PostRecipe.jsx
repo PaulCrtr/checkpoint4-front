@@ -55,7 +55,6 @@ const PostRecipe = () => {
       ingredients: tmpIngredients,
       instructions: tmpInstructions,
     };
-    console.log(data);
     if (id === "new") {
       axios
         .post("http://localhost:8000/recipes", data)
