@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import couverts from "../../img/couverts.png";
 import timer from "../../img/timer.png";
@@ -38,7 +38,9 @@ const Recipe = () => {
       <h3>{data && data.recipe[0].name_recipe}</h3>
       <div>
         <img src={trash} alt="delete" onClick={() => deleteRecipe()} />
-        <img src={edit} alt="edit" />
+        <Link to={`/postrecipe/${id}`}>
+          <img src={edit} alt="edit" />
+        </Link>
       </div>
       <div>
         <div>

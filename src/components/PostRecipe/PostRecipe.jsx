@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import IngredientsDisplay from "./IngredientsDisplay";
 import InstructionsDisplay from "./InstructionsDisplay";
 import Inputs from "./Inputs";
 import axios from "axios";
 
 const PostRecipe = () => {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -14,6 +16,32 @@ const PostRecipe = () => {
   const [currentInstr, setCurrentInstr] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
+
+  useEffect(() => {
+    if (id !== "new") {
+      axios
+        .get(`http://localhost:8000/recipes/${id}`)
+        .then((res) => res.data.result)
+        .then((res) => {
+          console.log(res);
+          const {
+            name_recipe,
+            number_recipe,
+            time_recipe,
+            author,
+            image,
+          } = res.recipe[0];
+          setTitle(name_recipe);
+          setAuthor(author);
+          setImageUrl(image);
+          setNecessaryTime(time_recipe);
+          setNbPeople(number_recipe);
+          setIngredients(res.ingredients.map((e) => e.name_ingredient));
+          setInstructions(res.instructions.map((e) => e.content_instruction));
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [id]);
 
   const sendRecipe = () => {
     const tmpIngredients = [...ingredients].map((e) => [e]);
@@ -28,10 +56,22 @@ const PostRecipe = () => {
       instructions: tmpInstructions,
     };
     console.log(data);
-    axios
-      .post("http://localhost:8000/recipes", data)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+    if (id === "new") {
+      axios
+        .post("http://localhost:8000/recipes", data)
+        .then((res) => console.log(res.data))
+        .catch((error) => console.log(error));
+    } else {
+      axios
+        .delete(`http://localhost:8000/recipes/${id}`)
+        .then(() => {
+          axios
+            .post("http://localhost:8000/recipes", data)
+            .then((res) => console.log(res.data))
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   return (

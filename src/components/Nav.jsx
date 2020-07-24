@@ -17,7 +17,7 @@ const Nav = () => {
       <div className="collapse navbar-collapse" id="navbarMenu">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="/postrecipe" className="nav-link">
+            <Link to="/postrecipe/new" className="nav-link">
               Post
             </Link>
           </li>
