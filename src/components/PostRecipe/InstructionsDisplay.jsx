@@ -40,6 +40,8 @@ const InstructionsDisplay = ({ instructions, setInstructions }) => {
                       setInstructions(tmpArr);
                     }
                   }}
+                  style={{ cursor: "pointer" }}
+                  className={i === 0 && "arrow-hidden"}
                 />
                 <img
                   src={arrowDown}
@@ -54,6 +56,8 @@ const InstructionsDisplay = ({ instructions, setInstructions }) => {
                       setInstructions(tmpArr);
                     }
                   }}
+                  style={{ cursor: "pointer" }}
+                  className={i === instructions.length - 1 && "arrow-hidden"}
                 />
                 <img
                   src={trash}
@@ -63,6 +67,7 @@ const InstructionsDisplay = ({ instructions, setInstructions }) => {
                     tmpArr.splice(i, 1);
                     setInstructions(tmpArr);
                   }}
+                  style={{ cursor: "pointer" }}
                 />
               </div>
             </li>

@@ -33,7 +33,7 @@ const Recipe = () => {
   };
 
   return (
-    <div className="container col-12">
+    <div className="container col-12 col-lg-8">
       <h2 className="mb-3">{data && data.recipe[0].name_recipe}</h2>
       <div className="card recipe-container">
         {backHome && <Redirect to="/" />}
