@@ -5,8 +5,8 @@ import arrowDown from "../../img/arrowDown.png";
 
 const InstructionsDisplay = ({ instructions, setInstructions }) => {
   return (
-    <section className="flex-fill ml-lg-4">
-      <ul className="list-group">
+    <section className="flex-fill ml-lg-2">
+      <ul className="list-group post-item-container">
         <li className="list-group-item text-light bg-dark text-center">
           Instructions
         </li>

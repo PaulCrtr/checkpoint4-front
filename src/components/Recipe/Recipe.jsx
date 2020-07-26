@@ -34,7 +34,7 @@ const Recipe = () => {
 
   return (
     <div className="container col-12">
-      <h3>{data && data.recipe[0].name_recipe}</h3>
+      <h2 className="mb-3">{data && data.recipe[0].name_recipe}</h2>
       <div className="card recipe-container">
         {backHome && <Redirect to="/" />}
         <div className="d-flex align-items-center justify-content-around mt-4">

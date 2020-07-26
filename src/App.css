@@ -20,6 +20,10 @@
   z-index: 1000;
 }
 
+h2 {
+  text-align: center;
+}
+
 /* Home */
 .home-card {
   margin-bottom: 2vh;
@@ -36,4 +40,25 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 10vh;
+}
+
+/* Author */
+.author-container {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Post */
+.post-item-container {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 1200px) {
+  .homelist-container {
+    display: flex;
+  }
+  .home-card {
+    margin: 1%;
+  }
 }
