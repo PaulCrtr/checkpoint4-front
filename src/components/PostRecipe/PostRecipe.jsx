@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import IngredientsDisplay from "./IngredientsDisplay";
 import InstructionsDisplay from "./InstructionsDisplay";
 import Inputs from "./Inputs";
@@ -16,6 +16,7 @@ const PostRecipe = () => {
   const [currentInstr, setCurrentInstr] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
+  const [insertId, setInsertId] = useState();
 
   useEffect(() => {
     if (id !== "new") {
@@ -58,7 +59,10 @@ const PostRecipe = () => {
     if (id === "new") {
       axios
         .post("http://localhost:8000/recipes", data)
-        .then((res) => console.log(res.data))
+        .then((res) => {
+          console.log(res.data);
+          setInsertId(res.data.recipeCreated.id);
+        })
         .catch((error) => console.log(error));
     } else {
       axios
@@ -66,7 +70,10 @@ const PostRecipe = () => {
         .then(() => {
           axios
             .post("http://localhost:8000/recipes", data)
-            .then((res) => console.log(res.data))
+            .then((res) => {
+              console.log(res.data);
+              setInsertId(res.data.recipeCreated.id);
+            })
             .catch((error) => console.log(error));
         })
         .catch((error) => console.log(error));
@@ -75,6 +82,7 @@ const PostRecipe = () => {
 
   return (
     <>
+      {insertId && <Redirect to={`/recipe/${insertId}`} />}
       <h2>Post</h2>
       <div className="d-lg-flex">
         <form className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
