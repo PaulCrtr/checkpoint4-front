@@ -33,55 +33,68 @@ const Recipe = () => {
   };
 
   return (
-    <div>
-      {backHome && <Redirect to="/" />}
+    <div className="container col-12">
       <h3>{data && data.recipe[0].name_recipe}</h3>
-      <div>
-        <img src={trash} alt="delete" onClick={() => deleteRecipe()} />
-        <Link to={`/postrecipe/${id}`}>
-          <img src={edit} alt="edit" />
-        </Link>
+      <div className="card recipe-container">
+        {backHome && <Redirect to="/" />}
+        <div className="d-flex align-items-center justify-content-around mt-4">
+          <div className="d-flex align-items-center">
+            {data && data.recipe[0].number_recipe}
+            <img src={couverts} alt="Number" className="ml-1" />
+          </div>
+          <div className="d-flex align-items-center">
+            {data && data.recipe[0].time_recipe}
+            <img src={timer} alt="Time" className="ml-1" />
+          </div>
+          <div className="d-flex align-items-center">
+            {data && data.recipe[0].author}
+            <img src={user} alt="Author" className="ml-1" />
+          </div>
+        </div>
+        <div className="card-body">
+          <div>
+            <h5 className="mb-3 mt-3">Ingredients</h5>
+            <ul className="list-group">
+              {data &&
+                data.ingredients &&
+                data.ingredients.map((e, i) => (
+                  <li className="list-group-item" key={i}>
+                    {e.name_ingredient}
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <div>
+            <h5 className="mb-3 mt-3">Preparation</h5>
+            <ul className="list-group">
+              {data &&
+                data.instructions &&
+                data.instructions.map((e, i) => (
+                  <li className="list-group-item" key={i}>
+                    <p>{i + 1}.</p>
+                    <p>{e.content_instruction}</p>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+        <div className="d-flex justify-content-around mb-3">
+          <img
+            style={{ cursor: "pointer" }}
+            src={trash}
+            alt="delete"
+            onClick={() => deleteRecipe()}
+          />
+          <Link to={`/postrecipe/${id}`}>
+            <img src={edit} alt="edit" />
+          </Link>
+        </div>
+        <img
+          className="card-img-bottom"
+          src={data && data.recipe[0].image}
+          alt="food"
+        />
       </div>
-      <div>
-        <div>
-          <p>{data && data.recipe[0].number_recipe}</p>
-          <img src={couverts} alt="Number" />
-        </div>
-        <div>
-          <p>{data && data.recipe[0].time_recipe}</p>
-          <img src={timer} alt="Time" />
-        </div>
-        <div>
-          <p>{data && data.recipe[0].author}</p>
-          <img src={user} alt="Author" />
-        </div>
-      </div>
-      <div>
-        <div>
-          <h5>Ingredients</h5>
-          <ul>
-            {data &&
-              data.ingredients &&
-              data.ingredients.map((e, i) => (
-                <li key={i}>{e.name_ingredient}</li>
-              ))}
-          </ul>
-        </div>
-        <div>
-          <h5>Preparation</h5>
-          <ul>
-            {data &&
-              data.instructions &&
-              data.instructions.map((e, i) => (
-                <li key={i}>
-                  <p>{i + 1}</p>
-                  <p>{e.content_instruction}</p>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </div>
-      <img src={data && data.recipe[0].image} alt="food" />
     </div>
   );
 };

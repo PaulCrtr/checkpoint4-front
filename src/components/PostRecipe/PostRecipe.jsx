@@ -75,6 +75,7 @@ const PostRecipe = () => {
 
   return (
     <>
+      <h2>Post</h2>
       <div className="d-lg-flex">
         <form className="container col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5">
           <Inputs

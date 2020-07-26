@@ -9,7 +9,7 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <div
-      className="card"
+      className="card home-card"
       style={{ width: "18rem", cursor: "pointer" }}
       onClick={() => {
         setLink(true);
