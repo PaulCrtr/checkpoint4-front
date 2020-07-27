@@ -3,7 +3,7 @@ import trash from "../../img/trashdelete.png";
 
 const IngredientsDisplay = ({ ingredients, setIngredients }) => {
   return (
-    <section className="flex-fill">
+    <section className="flex-fill mb-3">
       <ul className="list-group post-item-container">
         <li className="list-group-item text-light bg-dark text-center">
           Ingredients

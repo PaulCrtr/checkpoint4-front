@@ -41,7 +41,7 @@ const InstructionsDisplay = ({ instructions, setInstructions }) => {
                     }
                   }}
                   style={{ cursor: "pointer" }}
-                  className={i === 0 && "arrow-hidden"}
+                  className={i === 0 ? "arrow-hidden" : ""}
                 />
                 <img
                   src={arrowDown}
@@ -57,7 +57,9 @@ const InstructionsDisplay = ({ instructions, setInstructions }) => {
                     }
                   }}
                   style={{ cursor: "pointer" }}
-                  className={i === instructions.length - 1 && "arrow-hidden"}
+                  className={
+                    i === instructions.length - 1 ? "arrow-hidden" : ""
+                  }
                 />
                 <img
                   src={trash}
